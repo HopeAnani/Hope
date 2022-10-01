@@ -14,34 +14,73 @@
            <ul>
               <li>
                  <i class='bx bxs-brightness-half'></i>
-                 <p>BrightNess</p>
+                 <!-- <p>BrightNess</p> -->
               </li>
               <li>
                 <i class='bx bxs-circle' ></i>
-                <p>Contrast</p>
+                <!-- <p>Contrast</p> -->
               </li>
               <li>
                  <i class='bx bxs-brush' ></i>
-                 <p>Blur</p>
+                 <!-- <p>Blur</p> -->
               </li>
               <li>
                  <i class='bx bxs-collection' ></i>
-                 <p>GreyScale</p>
+                 <!-- <p>GreyScale</p> -->
               </li>
               <li>
                  <i class='bx bxs-color-fill' ></i>
-                 <p>Hue Rotate</p>
+                 <!-- <p>Hue Rotate</p> -->
               </li>
               <li>
                  <i class='bx bxs-magic-wand' ></i>
-                 <p>Saturation</p>
+                 <!-- <p>Saturation</p> -->
+              </li>
+              <li>
+               <i class='bx bx-transfer-alt' ></i>
+               <!-- <p>Invertion</p> -->
               </li>
               <li>
                 <i class='bx bxs-share-alt'></i>
-                <p>Share</p>
+                <!-- <p>Share</p> -->
               </li>
+               <li>
+                  <i id="right" class='bx bx-rotate-right rotate'></i>                
+                  <!-- <p>Rotate Right</p> -->
+               </li>
+               <li>
+                  <i id="left" class='bx bx-rotate-left rotate' ></i>
+                  <!-- <p>Rotate Left</p> -->
+               </li>
+               <li>
+                  <i id="horizontal" class='bx bx-horizontal-center rotate'></i>
+                  <!-- <p>Flip Right</p> -->
+               </li>
+               <li>
+                  <i id="vertical" class='bx bx-vertical-center rotate'></i>
+                  <!-- <p>Flip Up</p> -->
+               </li>
+               <li>
+                  <i class='bx bx-crop'></i>
+                  <!-- <p>Crop</p> -->
+               </li>
+               <li>
+                  <i id="zoomIn" class='bx bx-zoom-in'></i>
+                  <!-- <p>Zoom In</p> -->
+               </li>
+               <li>
+                  <i id="zoomOut" class='bx bx-zoom-out'></i>
+                  <!-- <p>Zoom Out</p> -->
+               </li>
+               <li onclick="Download_btn()">
+                  <i class='bx bx-export' ></i>
+                  <!-- <p>Export</p> -->
+               </li>
            </ul>
         </div>
+
+      
+
         <div class="content">
            <p id="logo">Edit Image</p>
            <div class="choose_image">
@@ -81,38 +120,13 @@
                  <input type="range" max="100" min="1" value="1" id="saturation" class="slider">
                  <p id="saturationVal" class="show_value">1</p>
               </div>
+              <div class="option">
+               <input type="range" max="100" min="1" value="1" id="invertion" class="slider">
+               <p id="invertionVal" class="show_value">1</p>
+               </div>
            </div>
            <button id="clearAll"><span>Reset</span><i class='bx bx-reset' ></i></button>
         </div>
-
-        <div class="Tools">
-            <ul>
-               <li>
-                  <i id="right" class='bx bx-rotate-right rotate'></i>                
-                  <p>Rotate Right</p>
-               </li>
-               <li>
-                  <i id="left" class='bx bx-rotate-left rotate' ></i>
-                  <p>Rotate Left</p>
-               </li>
-               <li>
-                  <i id="horizontal" class='bx bx-horizontal-center rotate'></i>
-                  <p>Flip Right</p>
-               </li>
-               <li>
-                  <i id="vertical" class='bx bx-vertical-center rotate'></i>
-                  <p>Flip Up</p>
-               </li>
-               <li>
-                  <i class='bx bx-crop'></i>
-                  <p>Crop</p>
-               </li>
-               <li onclick="Download_btn()">
-                  <i class='bx bx-export' ></i>
-                  <p>Export</p>
-               </li>
-            </ul>
-         </div>
     </div>
 
      <script src="../js/main.js"></script>
