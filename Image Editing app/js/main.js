@@ -21,6 +21,9 @@ let rightBtn = document.querySelector('#right');
 let leftBtn = document.querySelector('#left');
 let flipRight = document.querySelector('#horizontal');
 let flipUp = document.querySelector('#vertical');
+let zoomImage = document.querySelector('#image');
+let zoomIn = document.querySelector('#zoomIn');
+let zoomOut = document.querySelector('#zoomOut');
 let rotateDeg = 0;
 
 // let rotateOptions = document.querySelectorAll(".rotate");
@@ -78,6 +81,7 @@ function editImage() {
    let grey = document.querySelector('#greyScale');
    let hue = document.querySelector('#hue');
    let saturation = document.querySelector('#saturation');
+   let invertion = document.querySelector('#invertion');
 
 
    let brightValShow = document.querySelector('#brightVal');
@@ -86,6 +90,7 @@ function editImage() {
    let greyValShow = document.querySelector('#greyVal');
    let hueValShow = document.querySelector('#hueVal');
    let saturationValShow = document.querySelector('#saturationVal');
+   let invertionValShow = document.querySelector('#invertionVal');
 
    let brightVal = bright.value;
    let contrastVal = contrast.value;
@@ -93,6 +98,7 @@ function editImage() {
    let blurVal = blur.value;
    let hueVal = hue.value;
    let satuVal = saturation.value;
+   let invertVal = invertion.value;
 
    brightValShow.innerHTML = brightVal;
    contrastValShow.innerHTML = contrastVal;
@@ -100,12 +106,14 @@ function editImage() {
    greyValShow.innerHTML = greyVal;
    hueValShow.innerHTML = hueVal;
    saturationValShow.innerHTML = satuVal;
+   invertionValShow.innerHTML = invertVal;
 
-   image.style.filter = 'grayscale(' + greyVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
+   image.style.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
 
-   context.filter = 'grayscale(' + greyVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
+   context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
    
    clearAll.style.transform = 'translateY(0px)';
+   clearAll.style.display = 'flex';
 }
 
 
@@ -124,7 +132,7 @@ list_options.forEach((list_option, index) => {
             canvas.height = image.naturalHeight;
             canvas.width = image.naturalWidth;
 
-            for (let i = 0; i <= 5; i++) {
+            for (let i = 0; i <= 6; i++) {
 
                if (index != i) {
                   list_options[i].classList.remove("active_option");
@@ -189,6 +197,7 @@ function clearAllRangeValue() {
 
    editImage();
    clearAll.style.transform = 'translateY(150px)';
+   clearAll.style.display = 'flex';
 }
 
 /*remove image btn click*/
@@ -206,7 +215,7 @@ remove_img_btn.addEventListener("click", function () {
    rightBtn.addEventListener('click',() =>{
       rotateDeg = rotateDeg + 90;
       rotateImage.style.transform = 'rotate('+rotateDeg+'deg)';
-      // context.transform = 'rotate('+rotateDeg+'deg)';
+      context.transform = 'rotate('+rotateDeg+'deg)';
    })
    
    leftBtn.addEventListener('click', () =>{
@@ -224,4 +233,21 @@ remove_img_btn.addEventListener("click", function () {
       rotateImage.style.transform = 'rotateZ('+rotateDeg+'deg)';
    })
 
+   zoomIn.addEventListener('click',() => {
+      var currWidth = zoomImage.clientWidth;
+      if(currWidth == 5000){
+         alert('Maximum Zoom In reached');
+      }
+      else{
+         zoomImage.style.width = (currWidth + 40) + 'px';
+      }
+   })
 
+   zoomOut.addEventListener('click',() => {
+      var currWidth = zoomImage.clientWidth;
+      if(currWidth == 40){
+         alert('Maximum zoom out reached');
+      }else{
+         zoomImage.style.width  = (currWidth - 40) + 'px';
+      }
+   })
