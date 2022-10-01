@@ -1,0 +1,57 @@
+body{
+    background-image: url(../Images/SpaceBackground.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#Title{
+    margin-top: 3%;
+    margin-left: 35%;
+    font-family: monospace;
+    font-weight: bolder;
+    font-size: x-large;
+    color: antiquewhite;
+}
+.card{
+    background-color: transparent;
+}
+.link{
+    color: gold;
+    text-decoration: none;
+}
+.link:hover{
+    color:white !important;
+    text-decoration: underline !important;
+}
+.d-md-flex{
+    margin-top: -5%;
+    margin-right: 2%;
+}
+#blur.active{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+#popup{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    padding: 5%;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+    background: black;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#popup.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+@media (max-width: 991.98px){
+    .d-md-flex{
+        margin-top: 2%;
+    }
+  }
