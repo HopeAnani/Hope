@@ -89,6 +89,7 @@ let grey;
 let hue;
 let saturation;
 let invertion;
+let opacity;
 
 let brightVal;
 let contrastVal;
@@ -97,6 +98,7 @@ let blurVal;
 let hueVal;
 let satuVal;
 let invertVal;
+let opacityVal;
 
 function editImage() {
    bright = document.querySelector('#brightness');
@@ -106,7 +108,7 @@ function editImage() {
    hue = document.querySelector('#hue');
    saturation = document.querySelector('#saturation');
    invertion = document.querySelector('#invertion');
-
+   opacity = document.querySelector('#opacity');
 
    let brightValShow = document.querySelector('#brightVal');
    let contrastValShow = document.querySelector('#contrastVal');
@@ -124,7 +126,8 @@ function editImage() {
    hueVal = hue.value;
    satuVal = saturation.value;
    invertVal = invertion.value;
-
+   opacityVal = opacity.value;
+   
    brightValShow.innerHTML = brightVal;
    contrastValShow.innerHTML = contrastVal;
    blurValShow.innerHTML = blurVal;
@@ -166,13 +169,10 @@ list_options.forEach((list_option, index) => {
                   option[i].classList.add("active_controller");
                }
             }
-
          } else {
             alert("Edit Your Image First");
          }
-
       }
-
    })
 })
 
@@ -186,7 +186,7 @@ function Download_btn() {
       const context = canvas.getContext("2d");
       canvas.height = image.naturalHeight;
       canvas.width = image.naturalWidth;
-      context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
+      context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) opacity(' + opacityVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
       context.translate(canvas.width / 2, canvas.height / 2); // translating canvas from center
       if(rotateDeg !== 0) { // if rotate value isn't 0 , rotate the canvas
          context.rotate(rotateDeg * Math.PI / 180);
@@ -217,9 +217,8 @@ function clearAllRangeValue() {
   image.style.filter = "none";
 //   context.filter = "none";
   for (let i = 0; i <= slider.length - 1; i++) {
-    if (i == 0) {
-      slider[i].value = "100";
-    } else if (i == 1) {
+   console.log(slider.length);
+   if (i == 1 || i == 0 || i == 7) {
       slider[i].value = "100";
     } else {
       slider[i].value = "0";
