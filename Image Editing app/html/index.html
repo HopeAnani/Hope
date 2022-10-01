@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Image</title>
+    <!-- for crop tool -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
 </head>
@@ -56,6 +58,8 @@
               <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
               <img src="" alt="img" id="image">
            </div>
+            
+
            <div class="options">
               <div class="option">
                  <input type="range" max="200" min="5" value="100" id="brightness" class="slider">
@@ -82,6 +86,10 @@
                  <p id="saturationVal" class="show_value">1</p>
               </div>
            </div>
+
+            <!-- added crop button -->
+            <button id="crop">Crop</button>
+
            <button id="clearAll"><span>Reset</span><i class='bx bx-reset' ></i></button>
         </div>
 
@@ -103,7 +111,7 @@
                   <i id="vertical" class='bx bx-vertical-center rotate'></i>
                   <p>Flip Up</p>
                </li>
-               <li>
+               <li id="en_de_crop">
                   <i class='bx bx-crop'></i>
                   <p>Crop</p>
                </li>
@@ -115,6 +123,7 @@
          </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
      <script src="../js/main.js"></script>
 </body>
 </html>

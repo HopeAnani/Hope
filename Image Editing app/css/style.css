@@ -162,6 +162,7 @@ p#hint {
 	height: 100%;
 	object-fit: contain;
 	border-radius: 15px;
+	max-width: 100%;
 }
 
 .image_holder button {
@@ -218,6 +219,24 @@ input[type="range"] {
 	outline: none;
 }
 
+/* crop button */
+#crop
+{
+	display: none;
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: 0.5s;
+	padding: 10px;
+	color: #17202A;
+	background: orange;
+	transform: translateX(200px);
+	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
+}
 
 /*clear or reset btn */
 #clearAll {
