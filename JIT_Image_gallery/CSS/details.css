@@ -1,0 +1,11 @@
+body{
+    background-image: url(../Images/SpaceBackground.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.card{
+    background-color: transparent;
+}
+.btn{
+    margin-top: 4%;
+}
