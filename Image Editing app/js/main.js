@@ -16,10 +16,10 @@ let option = document.querySelectorAll(".option");
 let clearAll = document.querySelector("#clearAll");
 let remove_img_btn = document.querySelector("#remove_img_btn");
 let rotateImage = document.querySelector('#image');
-let rightBtn = document.querySelector('#right');
-let leftBtn = document.querySelector('#left');
-let flipRight = document.querySelector('#horizontal');
-let flipUp = document.querySelector('#vertical');
+let rightBtn = document.querySelector('#rotate_right_li');
+let leftBtn = document.querySelector('#rotate_left_li');
+let flipRight = document.querySelector('#horizontal_li');
+let flipUp = document.querySelector('#vertical_li');
 let zoomImage = document.querySelector('#image');
 let zoomIn = document.querySelector('#zoomIn');
 let zoomOut = document.querySelector('#zoomOut');
@@ -30,12 +30,12 @@ let en_de_crop = document.querySelector("#en_de_crop");
 let originalImage = "";
 
 //for flipping and rotating
-let rotateDeg = 0;
+let rotateDeg = 0, flipHorizontal = 1, flipVertical = 1;
 
 // let rotateOptions = document.querySelectorAll(".rotate");
 
-let canvas = document.querySelector("#image_canvas");
-const context = canvas.getContext("2d");
+// let canvas = document.querySelector("#image_canvas");
+// const context = canvas.getContext("2d");
 
 let File_Name;
 let Edited = false;
@@ -75,14 +75,30 @@ for (let i = 0; i <= slider.length - 1; i++) {
   slider[i].addEventListener("input", editImage);
 }
 
+let bright;
+let contrast;
+let blur;
+let grey;
+let hue;
+let saturation;
+let invertion;
+
+let brightVal;
+let contrastVal;
+let greyVal;
+let blurVal;
+let hueVal;
+let satuVal;
+let invertVal;
+
 function editImage() {
-   let bright = document.querySelector('#brightness');
-   let contrast = document.querySelector('#contrast');
-   let blur = document.querySelector('#blur');
-   let grey = document.querySelector('#greyScale');
-   let hue = document.querySelector('#hue');
-   let saturation = document.querySelector('#saturation');
-   let invertion = document.querySelector('#invertion');
+   bright = document.querySelector('#brightness');
+   contrast = document.querySelector('#contrast');
+   blur = document.querySelector('#blur');
+   grey = document.querySelector('#greyScale');
+   hue = document.querySelector('#hue');
+   saturation = document.querySelector('#saturation');
+   invertion = document.querySelector('#invertion');
 
 
    let brightValShow = document.querySelector('#brightVal');
@@ -93,13 +109,13 @@ function editImage() {
    let saturationValShow = document.querySelector('#saturationVal');
    let invertionValShow = document.querySelector('#invertionVal');
 
-   let brightVal = bright.value;
-   let contrastVal = contrast.value;
-   let greyVal = grey.value;
-   let blurVal = blur.value;
-   let hueVal = hue.value;
-   let satuVal = saturation.value;
-   let invertVal = invertion.value;
+   brightVal = bright.value;
+   contrastVal = contrast.value;
+   greyVal = grey.value;
+   blurVal = blur.value;
+   hueVal = hue.value;
+   satuVal = saturation.value;
+   invertVal = invertion.value;
 
    brightValShow.innerHTML = brightVal;
    contrastValShow.innerHTML = contrastVal;
@@ -111,7 +127,7 @@ function editImage() {
 
    image.style.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
 
-   context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
+   // context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
    
    clearAll.style.transform = 'translateY(0px)';
    clearAll.style.display = 'flex';
@@ -126,8 +142,8 @@ list_options.forEach((list_option, index) => {
       options.style.transform = "translateY(0px)";
 
       if (Edited == true) {
-        canvas.height = image.naturalHeight;
-        canvas.width = image.naturalWidth;
+      //   canvas.height = image.naturalHeight;
+      //   canvas.width = image.naturalWidth;
 
         for (let i = 0; i <= 6; i++) {
           if (index != i) {
@@ -139,29 +155,7 @@ list_options.forEach((list_option, index) => {
           }
         }
       } else {
-
-         options.style.transform = 'translateY(0px)';
-
-         if (Edited == true) {
-            canvas.height = image.naturalHeight;
-            canvas.width = image.naturalWidth;
-
-            for (let i = 0; i <= 6; i++) {
-
-               if (index != i) {
-                  list_options[i].classList.remove("active_option");
-                  option[i].classList.remove("active_controller");
-
-               } else {
-                  this.classList.add("active_option");
-                  option[i].classList.add("active_controller");
-               }
-            }
-
-         } else {
-            alert("Edit Your Image First");
-         }
-
+         alert("Edit Your Image First");
       }
     }
   });
@@ -170,8 +164,20 @@ list_options.forEach((list_option, index) => {
 /*download image btn click*/
 function Download_btn() {
   if (image.getAttribute("src") != "") {
-    if (Edited == true) {
-      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    if (Edited == true) 
+    {
+      let canvas = document.querySelector("#image_canvas");
+      const context = canvas.getContext("2d");
+      canvas.height = image.naturalHeight;
+      canvas.width = image.naturalWidth;
+      context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
+      context.translate(canvas.width / 2, canvas.height / 2); // translating canvas from center
+      if(rotateDeg !== 0) { // if rotate value isn't 0 , rotate the canvas
+         context.rotate(rotateDeg * Math.PI / 180);
+      }
+      context.scale(flipHorizontal, flipVertical) ; // flip canvas, horizontally / vertically
+      context.drawImage(image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+
       var jpegUrl = canvas.toDataURL("image/jpg");
 
       const link = document.createElement("a");
@@ -192,7 +198,7 @@ clearAll.addEventListener("click", function () {
 
 function clearAllRangeValue() {
   image.style.filter = "none";
-  context.filter = "none";
+//   context.filter = "none";
   for (let i = 0; i <= slider.length - 1; i++) {
     if (i == 0) {
       slider[i].value = "100";
@@ -203,6 +209,12 @@ function clearAllRangeValue() {
     }
   }
   image.src = originalImage;
+
+   //reset image rotation
+   rotateDeg = 0;
+   flipHorizontal = 1;
+   flipVertical = 1;
+   rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
 
   editImage();
   clearAll.style.transform = "translateY(150px)";
@@ -218,37 +230,45 @@ remove_img_btn.addEventListener("click", function () {
   image_holder.style.display = "none";
   options.style.transform = "translateY(80px)";
   clearAllRangeValue();
+
+  //reset value of image input data
   selectedImage.value = null;
+
+  //reset image rotation
+  rotateDeg = 0;
+  flipHorizontal = 1;
+  flipVertical = 1;
+  rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
 });
 
 /*Rotate image */
-let rotateDeg2 = 0, rotateDeg3 = 0;
-rightBtn.addEventListener("click", () => {
-   console.log(rotateDeg);
-  rotateDeg = (rotateDeg + 90) % 360;
-  rotateImage.style.transform = `rotate(${rotateDeg}deg)`;
-   // context.rotate(90 * (Math.PI / 180));
 
-  // context.transform = 'rotate('+rotateDeg+'deg)';
+rightBtn.addEventListener("click", () => {
+   console.log(`before rotation: ${rotateDeg}`); 
+   rotateDeg = (rotateDeg + 90) % 360;
+   console.log(`after rotation: ${rotateDeg}`);
+   rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
 });
 
 leftBtn.addEventListener("click", () => {
-   console.log(rotateDeg);
+   console.log(`before rotation: ${rotateDeg}`); 
    rotateDeg = (rotateDeg - 90) % 360;
+   console.log(`after rotation: ${rotateDeg}`);
    rotateImage.style.transform = `rotate(${rotateDeg}deg)`;
 });
 
 flipRight.addEventListener("click", () => {
-   rotateDeg = (rotateDeg - 180) % 360;
-  rotateImage.style.transform =`rotateY(${rotateDeg}deg)`; //"rotateY("+ rotateDeg2 +"deg)" 
+   flipHorizontal = flipHorizontal === 1 ? -1 : 1;
+   rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
 });
 
 flipUp.addEventListener("click", () => {
-   rotateDeg = (rotateDeg - 180) % 360;
-  rotateImage.style.transform = `rotateZ(${rotateDeg}deg)`; //"rotateZ("+ rotateDeg3 +"deg)"
+   flipVertical = flipVertical === 1 ? -1 : 1;
+   rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
 });
 
 
+// zoom in zoom out image
 zoomIn.addEventListener('click',() => {
    var currWidth = zoomImage.clientWidth;
    if(currWidth == 5000){
@@ -278,25 +298,35 @@ document.getElementById('crop').addEventListener('click', function(){
    cropper.destroy();
    cropper = null;
    isEnabled = false;
+   crop.style.transform = "translateY(150px)";
 });
 
 document.getElementById('en_de_crop').addEventListener('click', ()=>{
    if(!isEnabled)
    {
-      crop.style.display = 'inline';
-      crop.style.transform = "translateY(0px)";
-      cropper = new Cropper(image, {
-         aspectRatio: 0,
-         viewMode: 0,
-         background: false
-     });
+      if(image.getAttribute('src') == "")
+         crop.style.display = 'none';
+      
+      else
+      {
+         clearAll.style.display = 'flex';
+         clearAll.style.transform = 'translateY(0px)';
+         crop.style.display = 'inline';
+         crop.style.transform = "translateY(0px)";
+         cropper = new Cropper(image, {
+            aspectRatio: 0,
+            viewMode: 0,
+            background: false
+         });
 
-     clearAll.style.transform = "translateY(0px)";
-     isEnabled = true;
+         clearAll.style.transform = "translateY(0px)";
+         isEnabled = true;
+      }
    }
    else
    {
       crop.style.transform = "translateY(150px)";
+      clearAll.style.transform = "translateY(150px)";
       cropper.destroy();
       cropper = null;
       isEnabled = false;
