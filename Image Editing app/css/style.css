@@ -16,8 +16,8 @@ body{
 }
 
 .main{
-    height: 550px;
-    width: 900px;
+    height: 100vh;
+    width: 100%;
     display: flex;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.05);
@@ -41,12 +41,15 @@ body{
 }
 
 .Tools ul li{
-    padding-left: 10px;	
-    height: 80px;
+	padding-left: 10px;
+	margin: auto;
+    /* width: 50%; */
+    height: 60px;
     display: flex;
-    align-items: left;
+    align-items:baseline;
     justify-content: left;
     flex-direction: column;
+	flex-wrap: wrap;
     cursor: pointer;
     transition: 0.4s;
 }
