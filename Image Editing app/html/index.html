@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Image</title>
-    <!-- for crop tool -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
@@ -43,9 +42,17 @@
                <!-- <p>Invertion</p> -->
               </li>
               <li>
+               <i class='bx bx-outline bx-rotate-180' ></i>
+               <!-- <p>Opacity</p> -->
+              </li>
+              <li>
                 <i class='bx bxs-share-alt'></i>
                 <!-- <p>Share</p> -->
-              </li>
+               </li>
+               <li id="en_de_crop">
+                  <i class='bx bx-crop'></i>
+                  <!-- <p>Crop</p> -->
+               </li>
                <li>
                   <i id="right" class='bx bx-rotate-right rotate'></i>                
                   <!-- <p>Rotate Right</p> -->
@@ -61,10 +68,6 @@
                <li>
                   <i id="vertical" class='bx bx-vertical-center rotate'></i>
                   <!-- <p>Flip Up</p> -->
-               </li>
-               <li id="en_de_crop">
-                  <i class='bx bx-crop'></i>
-                  <!-- <p>Crop</p> -->
                </li>
                <li>
                   <i id="zoomIn" class='bx bx-zoom-in'></i>
@@ -97,8 +100,6 @@
               <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
               <img src="" alt="img" id="image">
            </div>
-            
-
            <div class="options">
               <div class="option">
                  <input type="range" max="200" min="5" value="100" id="brightness" class="slider">
@@ -121,13 +122,17 @@
                  <p id="hueVal" class="show_value">0</p>
               </div>
               <div class="option">
-                 <input type="range" max="100" min="1" value="1" id="saturation" class="slider">
+                 <input type="range" max="100" min="0" value="1" id="saturation" class="slider">
                  <p id="saturationVal" class="show_value">1</p>
               </div>
               <div class="option">
-               <input type="range" max="100" min="1" value="1" id="invertion" class="slider">
+               <input type="range" max="100" min="0" value="0" id="invertion" class="slider">
                <p id="invertionVal" class="show_value">1</p>
                </div>
+              <div class="option">
+               <input type="range" max="100" min="1" value="100" id="opacity" class="slider">
+               <p id="opacityVal" class="show_value">100</p>
+              </div>
            </div>
 
             <!-- added crop button -->
@@ -135,37 +140,7 @@
 
            <button id="clearAll"><span>Reset</span><i class='bx bx-reset' ></i></button>
         </div>
-
-        <!-- <div class="Tools">
-            <ul>
-               <li>
-                  <i id="right" class='bx bx-rotate-right rotate'></i>                
-                  <p>Rotate Right</p>
-               </li>
-               <li>
-                  <i id="left" class='bx bx-rotate-left rotate' ></i>
-                  <p>Rotate Left</p>
-               </li>
-               <li>
-                  <i id="horizontal" class='bx bx-horizontal-center rotate'></i>
-                  <p>Flip Right</p>
-               </li>
-               <li>
-                  <i id="vertical" class='bx bx-vertical-center rotate'></i>
-                  <p>Flip Up</p>
-               </li>
-               <li id="en_de_crop">
-                  <i class='bx bx-crop'></i>
-                  <p>Crop</p>
-               </li>
-               <li onclick="Download_btn()">
-                  <i class='bx bx-export' ></i>
-                  <p>Export</p>
-               </li>
-            </ul>
-         </div>
-    </div> -->
-
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
      <script src="../js/main.js"></script>
 </body>
