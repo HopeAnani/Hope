@@ -15,12 +15,14 @@ let option = document.querySelectorAll(".option");
 
 let clearAll = document.querySelector("#clearAll");
 let remove_img_btn = document.querySelector("#remove_img_btn");
-
-let rotateImage = document.querySelector("#image");
-let rightBtn = document.querySelector("#right");
-let leftBtn = document.querySelector("#left");
-let flipRight = document.querySelector("#horizontal");
-let flipUp = document.querySelector("#vertical");
+let rotateImage = document.querySelector('#image');
+let rightBtn = document.querySelector('#right');
+let leftBtn = document.querySelector('#left');
+let flipRight = document.querySelector('#horizontal');
+let flipUp = document.querySelector('#vertical');
+let zoomImage = document.querySelector('#image');
+let zoomIn = document.querySelector('#zoomIn');
+let zoomOut = document.querySelector('#zoomOut');
 let crop = document.querySelector("#crop");
 let en_de_crop = document.querySelector("#en_de_crop");
 
@@ -74,65 +76,45 @@ for (let i = 0; i <= slider.length - 1; i++) {
 }
 
 function editImage() {
-  let bright = document.querySelector("#brightness");
-  let contrast = document.querySelector("#contrast");
-  let blur = document.querySelector("#blur");
-  let grey = document.querySelector("#greyScale");
-  let hue = document.querySelector("#hue");
-  let saturation = document.querySelector("#saturation");
+   let bright = document.querySelector('#brightness');
+   let contrast = document.querySelector('#contrast');
+   let blur = document.querySelector('#blur');
+   let grey = document.querySelector('#greyScale');
+   let hue = document.querySelector('#hue');
+   let saturation = document.querySelector('#saturation');
+   let invertion = document.querySelector('#invertion');
 
-  let brightValShow = document.querySelector("#brightVal");
-  let contrastValShow = document.querySelector("#contrastVal");
-  let blurValShow = document.querySelector("#blurVal");
-  let greyValShow = document.querySelector("#greyVal");
-  let hueValShow = document.querySelector("#hueVal");
-  let saturationValShow = document.querySelector("#saturationVal");
 
-  let brightVal = bright.value;
-  let contrastVal = contrast.value;
-  let greyVal = grey.value;
-  let blurVal = blur.value;
-  let hueVal = hue.value;
-  let satuVal = saturation.value;
+   let brightValShow = document.querySelector('#brightVal');
+   let contrastValShow = document.querySelector('#contrastVal');
+   let blurValShow = document.querySelector('#blurVal');
+   let greyValShow = document.querySelector('#greyVal');
+   let hueValShow = document.querySelector('#hueVal');
+   let saturationValShow = document.querySelector('#saturationVal');
+   let invertionValShow = document.querySelector('#invertionVal');
 
-  brightValShow.innerHTML = brightVal;
-  contrastValShow.innerHTML = contrastVal;
-  blurValShow.innerHTML = blurVal;
-  greyValShow.innerHTML = greyVal;
-  hueValShow.innerHTML = hueVal;
-  saturationValShow.innerHTML = satuVal;
+   let brightVal = bright.value;
+   let contrastVal = contrast.value;
+   let greyVal = grey.value;
+   let blurVal = blur.value;
+   let hueVal = hue.value;
+   let satuVal = saturation.value;
+   let invertVal = invertion.value;
 
-  image.style.filter =
-    "grayscale(" +
-    greyVal +
-    "%) hue-rotate(" +
-    hueVal +
-    "deg) brightness(" +
-    brightVal +
-    "%) blur(" +
-    blurVal +
-    "px) contrast(" +
-    contrastVal +
-    "%) saturate(" +
-    satuVal +
-    ")";
+   brightValShow.innerHTML = brightVal;
+   contrastValShow.innerHTML = contrastVal;
+   blurValShow.innerHTML = blurVal;
+   greyValShow.innerHTML = greyVal;
+   hueValShow.innerHTML = hueVal;
+   saturationValShow.innerHTML = satuVal;
+   invertionValShow.innerHTML = invertVal;
 
-  context.filter =
-    "grayscale(" +
-    greyVal +
-    "%) hue-rotate(" +
-    hueVal +
-    "deg) brightness(" +
-    brightVal +
-    "%) blur(" +
-    blurVal +
-    "px) contrast(" +
-    contrastVal +
-    "%) saturate(" +
-    satuVal +
-    ")";
+   image.style.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
 
-  clearAll.style.transform = "translateY(0px)";
+   context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
+   
+   clearAll.style.transform = 'translateY(0px)';
+   clearAll.style.display = 'flex';
 }
 
 /*handle each option click even*/
@@ -157,7 +139,29 @@ list_options.forEach((list_option, index) => {
           }
         }
       } else {
-        alert("Edit Your Image First");
+
+         options.style.transform = 'translateY(0px)';
+
+         if (Edited == true) {
+            canvas.height = image.naturalHeight;
+            canvas.width = image.naturalWidth;
+
+            for (let i = 0; i <= 6; i++) {
+
+               if (index != i) {
+                  list_options[i].classList.remove("active_option");
+                  option[i].classList.remove("active_controller");
+
+               } else {
+                  this.classList.add("active_option");
+                  option[i].classList.add("active_controller");
+               }
+            }
+
+         } else {
+            alert("Edit Your Image First");
+         }
+
       }
     }
   });
@@ -202,6 +206,7 @@ function clearAllRangeValue() {
 
   editImage();
   clearAll.style.transform = "translateY(150px)";
+  clearAll.style.display = 'flex';
   crop.style.transform = "translateY(150px)";
 }
 
@@ -244,6 +249,15 @@ flipUp.addEventListener("click", () => {
 });
 
 
+   zoomIn.addEventListener('click',() => {
+      var currWidth = zoomImage.clientWidth;
+      if(currWidth == 5000){
+         alert('Maximum Zoom In reached');
+      }
+      else{
+         zoomImage.style.width = (currWidth + 40) + 'px';
+      }
+   })
 
 //enable disable cropping tool
 let cropper = null;
@@ -279,3 +293,11 @@ document.getElementById('en_de_crop').addEventListener('click', ()=>{
       isEnabled = false;
    }
 });
+   zoomOut.addEventListener('click',() => {
+      var currWidth = zoomImage.clientWidth;
+      if(currWidth == 40){
+         alert('Maximum zoom out reached');
+      }else{
+         zoomImage.style.width  = (currWidth - 40) + 'px';
+      }
+   })

@@ -1,1 +1,1 @@
-# JunoCAM Image-Editing-App for Hackathon.
+# JunoCAM Image-Editing-Tool for Hackathon.

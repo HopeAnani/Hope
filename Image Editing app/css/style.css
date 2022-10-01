@@ -29,21 +29,23 @@ body{
 
 .Tools{
     height: 100%;
-    width: 10%;
+    width: 8%;
     box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.05);
 }
 
 .Tools ul{
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .Tools ul li{
-    width: 100%;
+    padding-left: 10px;	
     height: 80px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     flex-direction: column;
     cursor: pointer;
     transition: 0.4s;
@@ -247,7 +249,7 @@ input[type="range"] {
 	border: none;
 	cursor: pointer;
 	border-radius: 5px;
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	transition: 0.5s;
