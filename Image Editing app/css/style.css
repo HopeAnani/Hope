@@ -265,3 +265,32 @@ input[type="range"] {
 #clearAll span {
     margin-right: 10px;
 }
+
+/* tool tip */
+.main .Tools ul li .title p {
+	color: rgba(255, 255, 255, 0.8);
+	font-family: cursive;
+}
+.main .Tools ul li .title {
+	position: absolute;
+	left: 70px;
+	display: block;
+	background: rgba(255, 165, 0, 0.7);
+	width: 20%;
+	margin-top: 50px;
+	padding: 5px 10px;
+	transform: translateY(-15%) translateX(0px);
+	border-radius: 6px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.5s;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+
+.main .Tools ul li:hover .title {
+	transform: translateY(-15%) translateX(10px);
+	visibility: visible;
+	opacity: 1;
+}
