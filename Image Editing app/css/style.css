@@ -163,7 +163,6 @@ p#hint {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
-	border-radius: 15px;
 	max-width: 100%;
 }
 

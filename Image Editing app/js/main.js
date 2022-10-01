@@ -129,7 +129,7 @@ list_options.forEach((list_option, index) => {
         canvas.height = image.naturalHeight;
         canvas.width = image.naturalWidth;
 
-        for (let i = 0; i <= 5; i++) {
+        for (let i = 0; i <= 6; i++) {
           if (index != i) {
             list_options[i].classList.remove("active_option");
             option[i].classList.remove("active_controller");
@@ -249,15 +249,24 @@ flipUp.addEventListener("click", () => {
 });
 
 
-   zoomIn.addEventListener('click',() => {
-      var currWidth = zoomImage.clientWidth;
-      if(currWidth == 5000){
-         alert('Maximum Zoom In reached');
-      }
-      else{
-         zoomImage.style.width = (currWidth + 40) + 'px';
-      }
-   })
+zoomIn.addEventListener('click',() => {
+   var currWidth = zoomImage.clientWidth;
+   if(currWidth == 5000){
+      alert('Maximum Zoom In reached');
+   }
+   else{
+      zoomImage.style.width = (currWidth + 40) + 'px';
+   }
+})
+
+zoomOut.addEventListener('click',() => {
+   var currWidth = zoomImage.clientWidth;
+   if(currWidth == 40){
+      alert('Maximum zoom out reached');
+   }else{
+      zoomImage.style.width  = (currWidth - 40) + 'px';
+   }
+})
 
 //enable disable cropping tool
 let cropper = null;
@@ -293,11 +302,4 @@ document.getElementById('en_de_crop').addEventListener('click', ()=>{
       isEnabled = false;
    }
 });
-   zoomOut.addEventListener('click',() => {
-      var currWidth = zoomImage.clientWidth;
-      if(currWidth == 40){
-         alert('Maximum zoom out reached');
-      }else{
-         zoomImage.style.width  = (currWidth - 40) + 'px';
-      }
-   })
+
