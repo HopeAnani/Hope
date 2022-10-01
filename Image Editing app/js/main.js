@@ -1,20 +1,21 @@
-let upload_img_box = document.querySelector(".upload_img_box");
-let selectedImage = document.querySelector("#selectedImage");
-let choose_image = document.querySelector(".choose_image");
+let upload_img_box = document.querySelector('.upload_img_box');
+let selectedImage = document.querySelector('#selectedImage');
+let choose_image = document.querySelector('.choose_image');
 
-let image_holder = document.querySelector(".image_holder");
-let image = document.querySelector("#image");
+let image_holder = document.querySelector('.image_holder');
+let image = document.querySelector('#image');
 
-let slider = document.querySelectorAll(".slider");
-let show_value = document.querySelectorAll(".show_value");
+let slider = document.querySelectorAll('.slider');
+let show_value = document.querySelectorAll('.show_value');
 
-let list_options = document.querySelectorAll("ul li");
+let list_options = document.querySelectorAll('ul li');
 
-let options = document.querySelector(".options");
-let option = document.querySelectorAll(".option");
+let options = document.querySelector('.options');
+let option = document.querySelectorAll('.option');
 
-let clearAll = document.querySelector("#clearAll");
-let remove_img_btn = document.querySelector("#remove_img_btn");
+let clearAll = document.querySelector('#clearAll');
+let remove_img_btn = document.querySelector('#remove_img_btn');
+
 let rotateImage = document.querySelector('#image');
 let rightBtn = document.querySelector('#rotate_right_li');
 let leftBtn = document.querySelector('#rotate_left_li');
@@ -40,39 +41,45 @@ let rotateDeg = 0, flipHorizontal = 1, flipVertical = 1;
 let File_Name;
 let Edited = false;
 
+
+
 /*handle choose image event*/
 upload_img_box.addEventListener("click", function () {
-  selectedImage.click();
+   selectedImage.click();
 });
+
 
 /*choose image event*/
 selectedImage.addEventListener("change", function () {
-  const file = this.files[0];
-  if (file) {
-    const reader = new FileReader();
-    File_Name = file.name;
+   const file = this.files[0];
 
-    choose_image.style.display = "none";
-    image_holder.style.display = "block";
-    image_holder.style.backgroundColor = "transparent";
+   if (file) {
+      const reader = new FileReader();
+      File_Name = file.name;
 
-    reader.addEventListener("load", function () {
-      image.setAttribute("src", this.result);
-      originalImage = image.getAttribute("src");
-    });
+      choose_image.style.display = "none";
+      image_holder.style.display = "block";
+      image_holder.style.backgroundColor = "transparent";
 
-    reader.readAsDataURL(file);
-    remove_img_btn.style.display = "block";
-  }
+      reader.addEventListener("load", function () {
+         image.setAttribute("src", this.result);
+         originalImage = image.getAttribute("src");
+      });
 
-  if (Edited == false) {
-    Edited = true;
-  }
-});
+      reader.readAsDataURL(file);
+      remove_img_btn.style.display = "block";
+   }
+
+   if (Edited == false) {
+      Edited = true;
+   }
+
+})
+
 
 /*function call when slider value change*/
 for (let i = 0; i <= slider.length - 1; i++) {
-  slider[i].addEventListener("input", editImage);
+   slider[i].addEventListener('input', editImage);
 }
 
 let bright;
@@ -108,6 +115,7 @@ function editImage() {
    let hueValShow = document.querySelector('#hueVal');
    let saturationValShow = document.querySelector('#saturationVal');
    let invertionValShow = document.querySelector('#invertionVal');
+   let opacityValShow = document.querySelector('#opacityVal');
 
    brightVal = bright.value;
    contrastVal = contrast.value;
@@ -124,8 +132,9 @@ function editImage() {
    hueValShow.innerHTML = hueVal;
    saturationValShow.innerHTML = satuVal;
    invertionValShow.innerHTML = invertVal;
+   opacityValShow.innerHTML = opacityVal;
 
-   image.style.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
+   image.style.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) opacity(' + opacityVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
 
    // context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
    
@@ -133,33 +142,40 @@ function editImage() {
    clearAll.style.display = 'flex';
 }
 
+
 /*handle each option click even*/
 list_options.forEach((list_option, index) => {
-  list_option.addEventListener("click", function () {
-    if (image.getAttribute("src") == "") {
-      alert("Choose Image First");
-    } else {
-      options.style.transform = "translateY(0px)";
+   list_option.addEventListener('click', function () {
 
-      if (Edited == true) {
-      //   canvas.height = image.naturalHeight;
-      //   canvas.width = image.naturalWidth;
 
-        for (let i = 0; i <= 6; i++) {
-          if (index != i) {
-            list_options[i].classList.remove("active_option");
-            option[i].classList.remove("active_controller");
-          } else {
-            this.classList.add("active_option");
-            option[i].classList.add("active_controller");
-          }
-        }
+      if (image.getAttribute('src') == "") {
+         alert("Choose Image First");
       } else {
-         alert("Edit Your Image First");
+
+         options.style.transform = 'translateY(0px)';
+
+         if (Edited == true) {
+            for (let i = 0; i <= 7; i++) {
+
+               if (index != i) {
+                  list_options[i].classList.remove("active_option");
+                  option[i].classList.remove("active_controller");
+
+               } else {
+                  this.classList.add("active_option");
+                  option[i].classList.add("active_controller");
+               }
+            }
+
+         } else {
+            alert("Edit Your Image First");
+         }
+
       }
-    }
-  });
-});
+
+   })
+})
+
 
 /*download image btn click*/
 function Download_btn() {
@@ -191,10 +207,11 @@ function Download_btn() {
   }
 }
 
+
 /*clear or reset range value*/
 clearAll.addEventListener("click", function () {
-  clearAllRangeValue();
-});
+   clearAllRangeValue();
+})
 
 function clearAllRangeValue() {
   image.style.filter = "none";
@@ -332,4 +349,7 @@ document.getElementById('en_de_crop').addEventListener('click', ()=>{
       isEnabled = false;
    }
 });
+
+
+/*///////////////////////////////////////*/ 
 
