@@ -53,9 +53,6 @@ body{
     transition: 0.4s;
 }
 
-.Tools ul .active_option{
-    background: rgba(255, 255, 255, 0.1);
-}
 
 .Tools ul .active_option p{
     opacity: 1;
