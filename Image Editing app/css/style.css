@@ -307,7 +307,7 @@ display: none;
 	--facebook-clr: #3b5998;
 	--twitter-clr: #55acee;
 	--instagram-clr: #bc2a8d;
-	--reddit-clr: #ff4500;
+	--linkedin-clr: #0072b1;
 }
 
 li .dd_list {
@@ -381,9 +381,9 @@ li .dd_list {
 	color: var(--instagram-clr);
   }
   
-  li .dd_list ul li a.reddit span.icon,
-  li .dd_list ul li a.reddit span.text:hover {
-	color: var(--reddit-clr);
+  li .dd_list ul li a.linkedin span.icon,
+  li .dd_list ul li a.linkedin span.text:hover {
+	color: var(--linkedin-clr);
   }
   
   li .dd_list ul {
