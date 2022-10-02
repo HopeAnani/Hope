@@ -1,6 +1,7 @@
 # JunoCAM Image-Editing-Tool for Hackathon.
 
-
+#Pre-requisites
+ - Install Node.js
 # Getting started
 - Clone the repository
 ```
