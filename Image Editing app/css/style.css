@@ -288,9 +288,108 @@ input[type="range"] {
 	color: rgba(255, 255, 255, 0.9);
 }
 
+#share_li .title {
+display: none;
+}
 
 .main .Tools ul li:hover .title {
 	transform: translateY(-15%) translateX(10px);
 	visibility: visible;
 	opacity: 1;
 }
+
+
+/* share */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+:root {
+	--white: #fff;
+	--icon-clr: #aaaaaa;
+	--facebook-clr: #3b5998;
+	--twitter-clr: #55acee;
+	--instagram-clr: #bc2a8d;
+	--reddit-clr: #ff4500;
+}
+
+li .dd_list {
+	display: none;
+	background-color: var(--white);
+	position: absolute;
+	top: 45px;
+	left: 50%;
+	transform: translateX(-40%);
+  }
+
+  li .dd_list ul {
+	display: none;
+	width: auto;
+	background: var(--white);
+	margin: auto;
+	border-radius: 25px;
+	position: relative;
+	flex-direction: column;
+	width: 175px;
+	border-radius: 5px;
+  }
+  
+  li .dd_list ul li a {
+	display: flex;
+	height: 50px;
+	margin: 0 10px;
+	justify-content: center;
+	align-items: center;
+	color: var(--icon-clr);
+	width: 100%;
+	margin: 0;
+	text-decoration: none;
+  }
+  
+  li .dd_list ul li a span {
+	display: flex;
+  }
+  
+  li .dd_list ul li a span.icon {
+	width: 25px;
+	margin-right: 10px;
+  }
+  
+  li .dd_list ul li a span.text {
+	width: 125px;
+  }
+  
+  li .dd_list ul:before {
+	content: "";
+	position: absolute;
+	border: 8px solid;
+	top: -15px;
+	left: 50%;
+	transform: translateX(-50%);
+	border-color: transparent transparent var(--white) transparent;
+  }
+  
+  li .dd_list ul li a.facebook span.icon,
+  li .dd_list ul li a.facebook span.text:hover {
+	color: var(--facebook-clr);
+  }
+  
+  li .dd_list ul li a.twitter span.icon,
+  li .dd_list ul li a.twitter span.text:hover{
+	color: var(--twitter-clr);
+  }
+  
+  li .dd_list ul li a.instagram span.icon,
+  li .dd_list ul li a.instagram span.text:hover {
+	color: var(--instagram-clr);
+  }
+  
+  li .dd_list ul li a.reddit span.icon,
+  li .dd_list ul li a.reddit span.text:hover {
+	color: var(--reddit-clr);
+  }
+  
+  li .dd_list ul {
+	display: flex;
+  }
+
+  #share_li{
+	position: relative;
+  }

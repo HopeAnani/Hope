@@ -318,7 +318,11 @@ document.getElementById('crop').addEventListener('click', function(){
    isEnabled = false;
    crop.style.transform = "translateY(150px)";
 });
-
+cropper = new Cropper(image, {
+   aspectRatio: 0,
+   viewMode: 0,
+   background: false,
+});
 document.getElementById('en_de_crop').addEventListener('click', ()=>{
    if(!isEnabled)
    {
@@ -334,7 +338,7 @@ document.getElementById('en_de_crop').addEventListener('click', ()=>{
          cropper = new Cropper(image, {
             aspectRatio: 0,
             viewMode: 0,
-            background: false
+            background: false,
          });
 
          clearAll.style.transform = "translateY(0px)";
@@ -351,6 +355,21 @@ document.getElementById('en_de_crop').addEventListener('click', ()=>{
    }
 });
 
+// share button
+share_li = document.getElementById('share_li');
+share_link_list = document.querySelector('li .dd_list');
 
-/*///////////////////////////////////////*/ 
-
+let toggle = false;
+share_li.addEventListener('click', ()=>{
+   if(!toggle)
+   {
+      share_link_list.style.display = "block";
+      toggle = true;
+   }
+   else
+   {
+      share_link_list.style.display = "none";
+      toggle = false;
+   }
+      
+});
