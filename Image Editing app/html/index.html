@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 </head>
 <body>
     <div class="main">
@@ -68,9 +69,9 @@
                      <p>BrightNess Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nam ipsa architecto, amet atque assumenda voluptatibus quos dignissimos commodi sed molestiae veritatis. Ex dicta neque alias vel blanditiis velit consectetur.</p></div>
                </li>
                <li id="rotate_right_li">
-                  <i id="right" class='bx bx-rotate-right rotate'></i>                
-                  <div class="title">
-                     <h4>Rotate Right</h4>
+                     <i id="right" class='bx bx-rotate-right rotate'></i>                
+                     <div class="title">
+                        <h4>Rotate Right</h4>
                      <p>BrightNess Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nam ipsa architecto, amet atque assumenda voluptatibus quos dignissimos commodi sed molestiae veritatis. Ex dicta neque alias vel blanditiis velit consectetur.</p></div>
                </li>
                <li id="rotate_left_li">
@@ -85,12 +86,12 @@
                      <h4>Flip Horizontal</h4>
                      <p>BrightNess Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nam ipsa architecto, amet atque assumenda voluptatibus quos dignissimos commodi sed molestiae veritatis. Ex dicta neque alias vel blanditiis velit consectetur.</p></div>
                </li>
-               <li id="vertical_li">
+                  <li id="vertical_li">
                   <i id="vertical" class='bx bx-vertical-center rotate'></i>
                   <div class="title">
                      <h4>Flip Vertical</h4>
                      <p>BrightNess Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nam ipsa architecto, amet atque assumenda voluptatibus quos dignissimos commodi sed molestiae veritatis. Ex dicta neque alias vel blanditiis velit consectetur.</p></div>
-               </li>
+                  </li>
                <li id="zoomIn_li">
                   <i id="zoomIn" class='bx bx-zoom-in'></i>
                   <div class="title">
@@ -114,7 +115,6 @@
                   <div class="title">
                     <h4>Share</h4>
                     <p>BrightNess Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur nam ipsa architecto, amet atque assumenda voluptatibus quos dignissimos commodi sed molestiae veritatis. Ex dicta neque alias vel blanditiis velit consectetur.</p></div>
-                    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
                     <div class="dd_list">
                        <ul>
                          <li><a href="#" class="facebook">
@@ -156,21 +156,23 @@
         </div>
 
       
-
         <div class="content">
-           <p id="logo">Edit Image</p>
+           <img id="logo" src="JIT2.png" alt="">
+           <p id="logo1">Image Editing Tool</p>
+           
            <div class="choose_image">
               <div class="upload_img_box">
                  <i class='bx bxs-image-add' ></i><br>
                  <input type="file" name="selectedImage" id="selectedImage" accept="image/jpeg, image/png">
                  <p id="hint">choose Image from folder</p>
-              </div>
-           </div>
-           <canvas id="image_canvas"></canvas>
-           <div class="image_holder">
-              <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
-              <img src="" alt="img" id="image">
-           </div>
+               </div>
+            </div>
+            <canvas id="image_canvas"></canvas>
+            <div class="image_holder">
+               <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
+               <img src="" alt="img" id="image">
+            </div>
+         
            <div class="options">
               <div class="option">
                  <input type="range" max="200" min="5" value="100" id="brightness" class="slider">
@@ -214,5 +216,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
      <script src="../js/main.js"></script>
+
 </body>
 </html>

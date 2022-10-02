@@ -58,7 +58,7 @@ selectedImage.addEventListener("change", function () {
       File_Name = file.name;
 
       choose_image.style.display = "none";
-      image_holder.style.display = "block";
+      image_holder.style.display = "flex";
       image_holder.style.backgroundColor = "transparent";
 
       reader.addEventListener("load", function () {
@@ -266,6 +266,9 @@ rightBtn.addEventListener("click", () => {
    rotateDeg = (rotateDeg + 90) % 360;
    console.log(`after rotation: ${rotateDeg}`);
    rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
+
+   clearAll.style.transform = 'translateY(0px)';
+   clearAll.style.display = 'flex';
 });
 
 leftBtn.addEventListener("click", () => {
@@ -273,16 +276,25 @@ leftBtn.addEventListener("click", () => {
    rotateDeg = (rotateDeg - 90) % 360;
    console.log(`after rotation: ${rotateDeg}`);
    rotateImage.style.transform = `rotate(${rotateDeg}deg)`;
+
+   clearAll.style.transform = 'translateY(0px)';
+   clearAll.style.display = 'flex';
 });
 
 flipRight.addEventListener("click", () => {
    flipHorizontal = flipHorizontal === 1 ? -1 : 1;
    rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
+
+   clearAll.style.transform = 'translateY(0px)';
+   clearAll.style.display = 'flex';
 });
 
 flipUp.addEventListener("click", () => {
    flipVertical = flipVertical === 1 ? -1 : 1;
    rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
+
+   clearAll.style.transform = 'translateY(0px)';
+   clearAll.style.display = 'flex';
 });
 
 
