@@ -1,3 +1,5 @@
+
+//grab the neccessary elements
 let upload_img_box = document.querySelector('.upload_img_box');
 let selectedImage = document.querySelector('#selectedImage');
 let choose_image = document.querySelector('.choose_image');
@@ -27,29 +29,23 @@ let zoomOut = document.querySelector('#zoomOut');
 let crop = document.querySelector("#crop");
 let en_de_crop = document.querySelector("#en_de_crop");
 
-//for reseting purpose
+//for reseting image purpose
 let originalImage = "";
 
-//for flipping and rotating
+//for flipping and rotating image
 let rotateDeg = 0, flipHorizontal = 1, flipVertical = 1;
-
-// let rotateOptions = document.querySelectorAll(".rotate");
-
-// let canvas = document.querySelector("#image_canvas");
-// const context = canvas.getContext("2d");
 
 let File_Name;
 let Edited = false;
 
 
 
-/*handle choose image event*/
+/*handle choosing image event*/
 upload_img_box.addEventListener("click", function () {
    selectedImage.click();
 });
 
-
-/*choose image event*/
+//check if the file exists and display it
 selectedImage.addEventListener("change", function () {
    const file = this.files[0];
 
@@ -77,7 +73,7 @@ selectedImage.addEventListener("change", function () {
 })
 
 
-/*function call when slider value change*/
+/*function call when any slider value change*/
 for (let i = 0; i <= slider.length - 1; i++) {
    slider[i].addEventListener('input', editImage);
 }
@@ -100,6 +96,7 @@ let satuVal;
 let invertVal;
 let opacityVal;
 
+//edit the image filters
 function editImage() {
    bright = document.querySelector('#brightness');
    contrast = document.querySelector('#contrast');
@@ -138,15 +135,13 @@ function editImage() {
    opacityValShow.innerHTML = opacityVal;
 
    image.style.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) opacity(' + opacityVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
-
-   // context.filter = 'grayscale(' + greyVal + '%) invert('+ invertVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) contrast(' + contrastVal + '%) saturate(' + satuVal + ')';
    
    clearAll.style.transform = 'translateY(0px)';
    clearAll.style.display = 'flex';
 }
 
 
-/*handle each option click even*/
+/*handle each option click event*/
 list_options.forEach((list_option, index) => {
    list_option.addEventListener('click', function () {
 
@@ -177,7 +172,7 @@ list_options.forEach((list_option, index) => {
 })
 
 
-/*download image btn click*/
+/*download whne export btn is clickied*/
 function Download_btn() {
   if (image.getAttribute("src") != "") {
     if (Edited == true) 
@@ -215,7 +210,6 @@ clearAll.addEventListener("click", function () {
 
 function clearAllRangeValue() {
   image.style.filter = 'none';
-//   context.filter = "none";
   for (let i = 0; i <= slider.length - 1; i++) {
    console.log(slider.length);
    if (i == 1 || i == 0 || i == 7) {
@@ -260,7 +254,6 @@ remove_img_btn.addEventListener("click", function () {
 });
 
 /*Rotate image */
-
 rightBtn.addEventListener("click", () => {
    console.log(`before rotation: ${rotateDeg}`); 
    rotateDeg = (rotateDeg + 90) % 360;
@@ -281,6 +274,7 @@ leftBtn.addEventListener("click", () => {
    clearAll.style.display = 'flex';
 });
 
+// flip the images
 flipRight.addEventListener("click", () => {
    flipHorizontal = flipHorizontal === 1 ? -1 : 1;
    rotateImage.style.transform = `rotate(${rotateDeg}deg) scale(${flipHorizontal}, ${flipVertical})`;
@@ -367,7 +361,7 @@ document.getElementById('en_de_crop').addEventListener('click', ()=>{
    }
 });
 
-// share button
+//trigger drop down share list when share button is clicked
 share_li = document.getElementById('share_li');
 share_link_list = document.querySelector('li .dd_list');
 
