@@ -58,7 +58,7 @@ selectedImage.addEventListener("change", function () {
       File_Name = file.name;
 
       choose_image.style.display = "none";
-      image_holder.style.display = "block";
+      image_holder.style.display = "flex";
       image_holder.style.backgroundColor = "transparent";
 
       reader.addEventListener("load", function () {

@@ -119,21 +119,23 @@
         </div>
 
       
-
         <div class="content">
-           <p id="logo">Edit Image</p>
+           <img id="logo" src="JIT2.png" alt="">
+           <p id="logo1">Image Editing Tool</p>
+           
            <div class="choose_image">
               <div class="upload_img_box">
                  <i class='bx bxs-image-add' ></i><br>
                  <input type="file" name="selectedImage" id="selectedImage" accept="image/jpeg, image/png">
                  <p id="hint">choose Image from folder</p>
-              </div>
-           </div>
-           <canvas id="image_canvas"></canvas>
-           <div class="image_holder">
-              <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
-              <img src="" alt="img" id="image">
-           </div>
+               </div>
+            </div>
+            <canvas id="image_canvas"></canvas>
+            <div class="image_holder">
+               <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
+               <img src="" alt="img" id="image">
+            </div>
+         
            <div class="options">
               <div class="option">
                  <input type="range" max="200" min="5" value="100" id="brightness" class="slider">
@@ -177,5 +179,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/0.8.1/cropper.min.js"></script>
      <script src="../js/main.js"></script>
+
 </body>
 </html>
