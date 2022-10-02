@@ -214,13 +214,15 @@ clearAll.addEventListener("click", function () {
 })
 
 function clearAllRangeValue() {
-  image.style.filter = "none";
+  image.style.filter = 'none';
 //   context.filter = "none";
   for (let i = 0; i <= slider.length - 1; i++) {
    console.log(slider.length);
    if (i == 1 || i == 0 || i == 7) {
       slider[i].value = "100";
-    } else {
+    } else if(i == 5){
+      slider[i].value = "1";
+    }else {
       slider[i].value = "0";
     }
   }
